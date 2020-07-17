@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactModal from "react-modal";
-import { FaWindowClose } from "react-icons/fa";
-import { LoginForm } from "./LoginForm";
+
 
 ReactModal.setAppElement("#modal-root");
 export const Modal = ({ isOpen, closeModal, header, children, className }) => {

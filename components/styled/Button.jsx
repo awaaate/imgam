@@ -1,6 +1,4 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { activeEffect } from "./variables";
 
 export const Button = ({ children, className, ...props }) => (
     <button

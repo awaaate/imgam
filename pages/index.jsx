@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { db } from "../lib/firebase";
 
-import CardList from "../components/card/list";
+import CardList from "../components/card/List";
 import { Modal } from "../components/Modal";
 
 import { useSearchContext } from "../lib/SearchContext";

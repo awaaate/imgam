@@ -1,7 +1,6 @@
 import React from "react";
 
 import { FormInput } from "./FormInput";
-import { Button } from "./styled/Button";
 import { auth, signInWithGoogle } from "../lib/firebase";
 import { useState } from "react";
 import Router from "next/router";

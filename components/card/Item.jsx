@@ -1,94 +1,11 @@
 import React, { useContext } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import styled from "styled-components";
+
 import moment from "moment";
-import { likePost, unlikePost, postImage } from "../../lib/firebase.js";
+
+import { likePost, unlikePost} from "../../lib/firebase.js";
 import { UserContext } from "../../lib/UserContext";
-import Router from "next/router";
-import { Button } from "../styled/Button.jsx";
 import { useLoginModalContext } from "../../lib/LoginModalContext.js";
-
-const Wrapper = styled.div`
-    max-width: 720px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    margin: auto;
-`;
-const Caption = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    .overlay {
-        background: ${(props) => props.theme.accent};
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0.6;
-        z-index: 0;
-    }
-    .caption {
-        font-weight: 600;
-        font-size: 1.6rem;
-        color: white;
-        z-index: 1;
-    }
-    .likes {
-        z-index: 1;
-
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-        svg {
-            fill: ${(props) => props.theme.dark};
-            font-size: 40px;
-            margin-right: 7px;
-        }
-        color: white;
-        font-size: 1.2rem;
-    }
-    opacity: 0;
-    &:hover {
-        transition: opacity 0.3s;
-        opacity: 1;
-    }
-`;
-const ImageContainer = styled.div`
-    cursor: pointer;
-    position: relative;
-    img {
-        width: 100%;
-        border-radius: 2px;
-    }
-`;
-const Meta = styled.div`
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    width: 100%;
-    color: #fff;
-    opacity: 0.6;
-    font-weight: 500;
-
-    .likes {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-
-        svg {
-            fill: ${(props) => props.theme.dark};
-            font-size: 1.2rem;
-        }
-    }
-`;
 
 const CardItem = ({ id, image, caption, likes, createdAt, userName }) => {
     const { user } = useContext(UserContext);

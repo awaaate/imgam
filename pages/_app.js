@@ -17,8 +17,8 @@ const App = ({ Component, pageProps }) => {
         <ThemeProvider theme={theme}>
             <NextNprogress
                 color="#3366ff"
-                startPosition="0.3"
-                stopDelayMs="200"
+                startPosition={0.3}
+                stopDelayMs={200}
                 height="3"
             />
             <SearchContextProvider>

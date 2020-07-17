@@ -42,9 +42,6 @@ export const UploadInput = ({ onChange, image }) => {
     useEffect(() => {
         setReader(new FileReader());
     }, []);
-    useEffect(() => {
-        console.log("updated");
-    });
     const handleDrag = (event) => {
         event.preventDefault();
         event.stopPropagation();

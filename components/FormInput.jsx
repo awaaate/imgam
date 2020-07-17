@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "./styled/Input";
 
 export const FormInput = ({ label, ...otherProps }) => {
     return (
