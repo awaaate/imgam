@@ -1,0 +1,30 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+body {
+    @apply bg-gray-200
+    
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.inset-40{
+    top: 40px;
+    left: 40px;
+    bottom: 40px;
+    right: 40px;
+    
+}
+
+.w-375{
+    width: 375px;
+    height: min-content;
+}
