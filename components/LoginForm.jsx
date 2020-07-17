@@ -7,6 +7,9 @@ import Router from "next/router";
 import { Link } from "./Link";
 import { FaGoogle } from "react-icons/fa";
 
+import { Alert } from "./Alert";
+
+let timeout = null;
 export const LoginForm = ({ className, completed }) => {
     const [data, setData] = useState({
         email: "",
@@ -16,7 +19,18 @@ export const LoginForm = ({ className, completed }) => {
         is: true,
         message: "Complete the form",
     });
+    const seInvalid = (message) => {
+        setValid({ message, is: false });
 
+        if (timeout === null) {
+            timeout = setTimeout(() => {
+                setValid({ message, is: true });
+                clearTimeout(timeout);
+                timeout = null;
+            }, 2000);
+            return;
+        }
+    };
     const onChangeHandler = (event) => {
         const { value, name } = event.target;
         setData((state) => ({ ...state, [name]: value }));
@@ -30,13 +44,13 @@ export const LoginForm = ({ className, completed }) => {
             Router.push("/");
         } catch (error) {
             if (error.message) {
-                setValid({ is: false, message: error.message });
+                seInvalid(error.message);
             }
         }
     };
     const checkForm = () => {
         if (!data.email || !data.password) {
-            setValid({ is: false, message: "Complete the form" });
+            seInvalid("Complete the form");
             return false;
         }
         setValid({ is: true });
@@ -64,16 +78,11 @@ export const LoginForm = ({ className, completed }) => {
             <FormInput
                 label="Password"
                 name="password"
+                type="password"
                 value={data.password}
                 onChange={onChangeHandler}
             />
-            <div
-                className="message"
-                style={{ color: "crimson", textAlign: "center" }}
-            >
-                {!valid.is ? <p>{valid.message}</p> : null}
-            </div>
-
+            <Alert show={!valid.is} message={valid.message} />
             <button
                 type="submit"
                 className="bg-primary text-white px-5 py-3 rounded font-bold text-center flex items-center justify-center cursor-pointer hover:bg-dark outline-none"
